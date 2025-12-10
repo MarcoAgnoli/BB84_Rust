@@ -1,13 +1,14 @@
 
 # BB84 – Versione concorrente (Rust)
 
-Simulazione concorrente del protocollo **BB84** secondo la specifica allegata.
+Simulazione concorrente del protocollo **BB84** secondo la specifica che allegherò a breve.
 - Concorrenza con **thread separati** per Scrittore, Lettore e (opzionale) Avversario
 - Sincronizzazione tramite **flag** su Canale Pubblico/Quantistico (attesa leggera)
 - **L'Avversario legge sempre prima del Lettore** (vincolo esplicito della specifica)
-- Stampa in `main` di **due tabelle**:
+- Stampa in `main` di **tre tabelle**:
   1) Sequenze (Scrittore / Avversario se presente / Lettore)
   2) Chiave finale di Scrittore e Lettore
+  3) Statistiche relative ai fotoni persi
 
 ## Requisiti
 - Rust stable
@@ -16,7 +17,7 @@ Simulazione concorrente del protocollo **BB84** secondo la specifica allegata.
 ## Esecuzione (un click)
 Apri la cartella in VS Code → `Run Task` → **BB84: Esegui**. Il task lancia `cargo run` e mostra l'output in un pannello dedicato.
 
-## Parametri
+## Parametri nel file main.rs
 - `LUNG_MSG = 64` (8 byte, 64 fotoni)
 - `ATTIVA_AVVERSARIO = false` (metti `true` per attivarlo)
 
