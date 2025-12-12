@@ -1,26 +1,37 @@
 
-# BB84 – Versione concorrente (Rust)
 
-Simulazione concorrente del protocollo **BB84**.
-- Concorrenza con **thread separati** per Scrittore, Lettore e (opzionale) Avversario
-- Sincronizzazione tramite **flag** su Canale Pubblico/Quantistico (attesa leggera)
-- Stampa in `main` di **tre tabelle**:
-  1) Sequenze (Scrittore / Avversario se presente / Lettore)
-  2) Chiave finale di Scrittore e Lettore
-  3) Statistiche relative ai fotoni persi
+# BB84 – Concurrent Version (Rust)
 
-## Requisiti
-- Rust stable
-- Visual Studio Code + estensione **Rust Analyzer**
+Concurrent simulation of the BB84 quantum key distribution protocol.
 
-## Esecuzione (un click)
-Apri la cartella in VS Code → `Run Task` → **BB84: Esegui**. Il task lancia `cargo run` e mostra l'output in un pannello dedicato.
+## Features
+- Concurrency with separate threads for **Writer**, **Reader**, and optional **Attacker**
+- Synchronization via flags on **Public/Quantum Channel** (lightweight waiting)
+- Output includes:
+  - Photon sequences (Writer / Attacker if active / Reader)
+  - Final symmetric keys for Writer and Reader
+  - Statistics on lost photons
 
-## Parametri nel file main.rs
-- `LUNG_MSG = 64` (8 byte, 64 fotoni)
-- `ATTIVA_AVVERSARIO = false` (metti `true` per attivarlo)
+## Requirements
+- Rust (stable)
+- Visual Studio Code with **Rust Analyzer** extension
 
-## Note
-- Il Lettore attende che `letto_da_avversario = true` (se l'avversario è attivo) prima di leggere ciascun fotone, garantendo l'ordine **Avversario → Lettore**.
-- Le sequenze e le chiavi vengono salvate anche in campi *debug* del Canale Pubblico per poterle stampare in `main`.
-- Il codice è stato scritto fornendo a Microsoft Copilot una specifica piuttosto dettagliata
+## How to Run
+1. Open the project folder in **VS Code**
+2. Go to **Run Task** → `BB84: Run`
+3. The task executes `cargo run` and displays output in a dedicated panel
+
+## Configuration
+Edit `main.rs` to adjust parameters:
+- `LUNG_MSG = 64` (8 bytes, 64 photons)
+- `ATTIVA_AVVERSARIO = false` (set to `true` to enable attacker)
+
+## Notes
+- The Reader waits for `letto_da_avversario = true` (if attacker is active) before reading each photon, ensuring the order Attacker → Reader.
+- Sequences and keys are stored in debug fields of the Public Channel for printing in `main`.
+- Code generated with assistance from Microsoft Copilot based on a detailed specification.
+
+---
+
+### License
+MIT License
