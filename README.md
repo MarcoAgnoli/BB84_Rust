@@ -1,10 +1,9 @@
 
 # BB84 – Versione concorrente (Rust)
 
-Simulazione concorrente del protocollo **BB84** secondo la specifica che allegherò a breve.
+Simulazione concorrente del protocollo **BB84**.
 - Concorrenza con **thread separati** per Scrittore, Lettore e (opzionale) Avversario
 - Sincronizzazione tramite **flag** su Canale Pubblico/Quantistico (attesa leggera)
-- **L'Avversario legge sempre prima del Lettore** (vincolo esplicito della specifica)
 - Stampa in `main` di **tre tabelle**:
   1) Sequenze (Scrittore / Avversario se presente / Lettore)
   2) Chiave finale di Scrittore e Lettore
@@ -24,3 +23,4 @@ Apri la cartella in VS Code → `Run Task` → **BB84: Esegui**. Il task lancia 
 ## Note
 - Il Lettore attende che `letto_da_avversario = true` (se l'avversario è attivo) prima di leggere ciascun fotone, garantendo l'ordine **Avversario → Lettore**.
 - Le sequenze e le chiavi vengono salvate anche in campi *debug* del Canale Pubblico per poterle stampare in `main`.
+- Il codice è stato scritto fornendo a Microsoft Copilot una specifica piuttosto dettagliata
